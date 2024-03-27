@@ -27,4 +27,31 @@ Resources:
               Service: ecs.amazonaws.com
             Action: 'sts:AssumeRole'
       ManagedPolicyArns:
+        - "arn:aws:iam::aws:policy/service-role/AmazonEC2ContainerServiceRole
+        
+  ECSCreateClusterPolicy2:
+    Type: AWS::IAM::Policy
+    Properties:
+      PolicyName: ECSCreateClusterPolicy2
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Action:
+              - ecs:CreateCluster
+            Resource: "*"
+      Roles:
+        - Ref: ECSRole
+
+  ECSRole2:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: ecs.amazonaws.com
+            Action: 'sts:AssumeRole'
+      ManagedPolicyArns:
         - "arn:aws:iam::aws:policy/service-role/AmazonEC2ContainerServiceRole"
